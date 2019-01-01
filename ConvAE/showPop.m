@@ -10,7 +10,7 @@ function showPop(pop, row, col)
             if count<=length(pop)
                 subplot(row,col,count)
                 imshow(pop{count})
-                title([fitnessVec(count) metricVec(count)])
+                % title([fitnessVec(count) metricVec(count)])
             end
             count=count+1;
         end

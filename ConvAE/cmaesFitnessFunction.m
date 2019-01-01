@@ -3,7 +3,6 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     global mu;
     global samples;
     global t;
-    global current_images;
     images = reshape(images, [samples,mu]);
     
     % Functions 
@@ -22,13 +21,12 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
         images_cell_decoded{indx} = decode(t, images_cell{indx});
         fitnessVec = [fitnessVec, fitnessFunction(images_cell_decoded{indx})];
     end
-    current_images = images_cell_decoded;
 
     % Calculate contributions and metric
     [contributions, metricVec] = contribs(images_cell_decoded,metric);
     sorted_contribs = sort(contributions);
-    norm_contribs = norm(contributions);
-    norm_fitness = norm(fitnessVec);
+    norm_contribs = norm(contributions, 0.5);
+    norm_fitness = prod(fitnessVec, 2)^(1/5);
 
     global distInterval;
     global intervalCounter;

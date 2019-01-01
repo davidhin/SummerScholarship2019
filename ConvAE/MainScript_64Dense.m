@@ -95,7 +95,7 @@ final = x;
 
 % Show final population
 figure
-showPop(final,5,1)
+showPop(final,2,3)
 
 global metricVec;
 global fitnessVec;

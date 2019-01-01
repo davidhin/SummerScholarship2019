@@ -8,5 +8,5 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(image)
     simB=imDistanceR(B,image,p);
     x = min(simA, simB);
     fitness=2^((1.0-x-0.85)*50);
-    fitness=min(2, fitness);
+    fitness=min(1, fitness);
 end

@@ -17,15 +17,22 @@ fitnessFunction = @fit_minDistImg; % Fitness function to be used
 global mu;
 global samples;
 global current_images;
-mu = 6;
+mu = 4;
 samples = 64;
 sigma = 0.5; % Setting a smaller sigma is better
 rng(4, 'twister');
 
 % Setup - CMAES
 opts = cmaes;
-opts.StopFunEvals = 25000;
+opts.StopFunEvals = 15000;
 opts.PopSize = 10; % Set population to around 5/10
+opts.StopOnWarnings = 0;
+opts.StopOnStagnation = 0;
+opts.WarnOnEqualFunctionValues = 0;
+
+% Plot
+global distInterval;
+distInterval = 100;
 
 %% ------------------------------------------- %%
 %%                     CMAES                   %%
@@ -45,12 +52,10 @@ global metric_plot;
 global contrib_plot;
 global fitness_plot;
 global intervalCounter;
-global distInterval;
 metric_plot = [];
 contribs_plot = [];
 fitness_plot = [];
 intervalCounter = 0;
-distInterval = 1000;
 
 % Initiate population
 pop = [];
@@ -89,6 +94,6 @@ for indx=1:mu
 end
 fitnessVec
 
-showPop(final,2,3)
+showPop(final,1,mu)
 return
 

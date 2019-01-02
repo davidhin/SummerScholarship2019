@@ -6,13 +6,16 @@ function showPop(pop, row, col)
     global fitnessVec;
     [temp1, temp2] = sort(metricVec);
     pop = pop(temp2);
+    fitnessVec = fitnessVec(temp2);
     count=1;
     for rows = 1:row
         for cols = 1:col
             if count<=length(pop)
+                figure(1)
                 subplot(row,col,count)
                 imshow(pop{count})
                 title([fitnessVec(count) temp1(count)])
+                drawnow 
             end
             count=count+1;
         end

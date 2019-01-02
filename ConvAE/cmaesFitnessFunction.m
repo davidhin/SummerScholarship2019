@@ -7,6 +7,8 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     global metric;
     global contribs;
     global fitnessFunction;
+    global fitnessVec;
+    global metricVec;
     images = reshape(images, [samples,mu]);
     
     % Variables
@@ -24,8 +26,8 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     % Calculate contributions and metric
     [contributions, metricVec] = contribs(images_cell_decoded,metric);
     sorted_contribs = sort(contributions);
-    norm_contribs = norm(contributions, 0.5);
-    norm_fitness = prod(fitnessVec);
+    norm_contribs = norm(contributions, 0.2);
+    norm_fitness = min(fitnessVec);
 
     % Plotting
     global distInterval;
@@ -41,7 +43,8 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
         norm_fitness
         metric_plot = [metric_plot; metricVec];               
         %contrib_plot = [contrib_plot; contributions]; 
-        fitness_plot = [fitness_plot; fitnessVec];                
+        fitness_plot = [fitness_plot; fitnessVec];    
+        showPop(current_images, 1, mu)
     end
     intervalCounter = intervalCounter + 1;
 

@@ -58,8 +58,7 @@ global samples;
 global current_images;
 mu = 5;
 samples = 64;
-lambda = 3;
-sigma = 3; % Setting a smaller sigma is better
+sigma = 0.5; % Setting a smaller sigma is better
 
 % Setup - CMAES
 opts = cmaes;
@@ -71,16 +70,11 @@ rng(1, 'twister');
 pop = [];
 stdev = [];
 for i = 1:mu
-    pop = [pop,normrnd(0,2,[samples,1])];
+    pop = [pop,normrnd(0,3,[samples,1])];
     %pop = [pop,zeros(samples,1)];
     stdev = [stdev,ones(samples,1)*sigma];
 end
 
-% pop(1:64,1) = encodedA;
-% pop(1:64,3) = encodedB;
-
-% Do feature based search.
-% x = cmaes('fitPlusSimABtimesMeanHue',pop(1:64,1),stdev(1:64,1),opts);
 tic
 x = cmaes('cmaesFitnessFunction',reshape(pop, [samples*mu,1]),reshape(stdev, [samples*mu,1]),opts);
 toc
@@ -95,7 +89,6 @@ final = x;
 
 % Show final population
 figure
-showPop(final,2,3)
 
 global metricVec;
 global fitnessVec;
@@ -108,6 +101,8 @@ for indx=1:mu
     fitnessVec = [fitnessVec, fitnessFunction(final{indx})];
 end
 fitnessVec
+
+showPop(final,2,3)
 
 return
 

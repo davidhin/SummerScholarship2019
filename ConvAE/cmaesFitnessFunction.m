@@ -28,7 +28,7 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     [contributions, metricVec] = contribs(images_cell_decoded,metric);
     sorted_contribs = sort(contributions);
     norm_contribs = norm(contributions, 1);
-    norm_fitness = norm(fitnessVec, 0.4);
+    norm_fitness = prod(fitnessVec);
 
     global distInterval;
     global intervalCounter;

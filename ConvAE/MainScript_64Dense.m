@@ -62,7 +62,7 @@ sigma = 0.5; % Setting a smaller sigma is better
 
 % Setup - CMAES
 opts = cmaes;
-opts.StopFunEvals = 10000;
+opts.StopFunEvals = 25000;
 opts.PopSize = 10; % Set population to around 5/10
 
 % Initiate population

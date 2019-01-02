@@ -3,14 +3,11 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     global mu;
     global samples;
     global t;
-    global current_images;
-    images = reshape(images, [samples,mu]);
-    
-    % Functions 
+    global current_images; % Used to hold images of current iteration
     global metric;
     global contribs;
     global fitnessFunction;
-    % fitnessFunction = @alwaysOne;
+    images = reshape(images, [samples,mu]);
     
     % Variables
     images_cell = num2cell(images,1);
@@ -30,6 +27,7 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     norm_contribs = norm(contributions, 0.6);
     norm_fitness = prod(fitnessVec);
 
+    % Plotting
     global distInterval;
     global intervalCounter;
     global metric_plot;
@@ -47,8 +45,6 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     end
     intervalCounter = intervalCounter + 1;
 
-    % fitness = 1.0 - (norm(contributions, 0.5)*prod(fitnessVec)^(1/5)); %  High similarity low diversity
     fitness = 1.0 - norm_contribs*norm_fitness; %  High similarity low diversity
-    return; % may  be 1 - um of contribs 
+    return; 
 end
-

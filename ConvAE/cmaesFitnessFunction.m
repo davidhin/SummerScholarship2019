@@ -27,8 +27,8 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     % Calculate contributions and metric
     [contributions, metricVec] = contribs(images_cell_decoded,metric);
     sorted_contribs = sort(contributions);
-    norm_contribs = norm(contributions, 0.4);
-    norm_fitness = prod(fitnessVec, 2)^(1/5);
+    norm_contribs = norm(contributions, 1);
+    norm_fitness = norm(fitnessVec, 0.4);
 
     global distInterval;
     global intervalCounter;
@@ -48,7 +48,7 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     intervalCounter = intervalCounter + 1;
 
     % fitness = 1.0 - (norm(contributions, 0.5)*prod(fitnessVec)^(1/5)); %  High similarity low diversity
-    fitness = 1.0 - sum(diff(metricVec))*norm_fitness; %  High similarity low diversity
+    fitness = 1.0 - norm_contribs*norm_fitness; %  High similarity low diversity
     return; % may  be 1 - um of contribs 
 end
 

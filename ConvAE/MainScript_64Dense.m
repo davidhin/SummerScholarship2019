@@ -17,14 +17,14 @@ fitnessFunction = @fit_minDistImg; % Fitness function to be used
 global mu;
 global samples;
 global current_images;
-mu = 5;
+mu = 6;
 samples = 64;
 sigma = 0.5; % Setting a smaller sigma is better
 rng(4, 'twister');
 
 % Setup - CMAES
 opts = cmaes;
-opts.StopFunEvals = 20000;
+opts.StopFunEvals = 25000;
 opts.PopSize = 10; % Set population to around 5/10
 
 %% ------------------------------------------- %%

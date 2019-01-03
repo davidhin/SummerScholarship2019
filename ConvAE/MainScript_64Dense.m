@@ -20,7 +20,7 @@ global current_images;
 global current_encoding;
 mu = 5;
 samples = 64;
-sigma = 10; % Setting a smaller sigma is better
+sigma = 5; % Setting a smaller sigma is better
 rng(3, 'twister');
 
 % Setup - CMAES

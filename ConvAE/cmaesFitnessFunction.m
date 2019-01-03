@@ -26,7 +26,7 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     % Calculate contributions and metric
     [contributions, metricVec] = contribs(images_cell_decoded,metric);
     sorted_contribs = sort(contributions);
-    norm_contribs = norm(contributions, 0.5);
+    norm_contribs = norm(contributions, 0.2);
     norm_fitness = prod(fitnessVec);
 
     % Plotting
@@ -43,10 +43,12 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
         norm_fitness
         metric_plot = [metric_plot; metricVec];               
         %contrib_plot = [contrib_plot; contributions]; 
-        fitness_plot = [fitness_plot; fitnessVec];  
+        fitness_plot = [fitness_plot; norm_fitness];  
         showPop(current_images, 1, mu)
         figure(2);
         plot(metric_plot);
+        figure(3);
+        plot(fitness_plot);
         drawnow
     end
     intervalCounter = intervalCounter + 1;
@@ -65,5 +67,3 @@ end
 %     simBVec = [simBVec, imDistanceR(B, current_images{indx}, 2)];
 %     end
 %     fitness = 1.0 - (abs(0.5 - metricVec) + abs(simAVec - simBVec));
-
-

@@ -6,6 +6,7 @@
 %% ------------------------------------------- %%
 
 % Setup - Fitness
+global t;
 global metric;
 global contribs;
 global fitnessFunction;
@@ -18,10 +19,12 @@ global mu;
 global samples;
 global current_images;
 global current_encoding;
-mu = 5;
+mu = 8;
 samples = 64;
-sigma = 5; % Setting a smaller sigma is better
+sigma = 0.7; % Setting a smaller sigma is better
 rng(3, 'twister');
+load('starting_vector.mat', 'current_encoding');
+start = current_encoding;
 
 % Setup - CMAES
 opts = cmaes;
@@ -64,8 +67,8 @@ pop = [];
 stdev = [];
 for i = 1:mu
     %pop = [pop,normrnd(0,2,[samples,1])];
-    %pop = [pop,start];
-    pop = [pop,zeros(samples,1)];
+    pop = [pop,start];
+    %pop = [pop,zeros(samples,1)];
     stdev = [stdev,ones(samples,1)*sigma];
 end
 
@@ -99,4 +102,3 @@ fitnessVec
 
 showPop(final,1,mu)
 return
-

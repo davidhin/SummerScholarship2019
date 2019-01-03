@@ -24,6 +24,11 @@ import matplotlib.pyplot as plt
 import socket
 import sys
 
+import tensorflow as tf
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+PATH = os.path.dirname(os.path.realpath(__file__))
+
 # ----------------------------------------------- #
 #                    Load Model                   #
 # ----------------------------------------------- #
@@ -67,7 +72,7 @@ decoder = Model(encoded_input, deco)
 decoder.summary()
 
 # Load pretrained weights
-model.load_weights("Models/64CoreDense.hdf5")
+model.load_weights(PATH + "/Models/64CoreDense.hdf5")
 
 print("Loaded autoencoder and pretrained weights")
 
@@ -107,7 +112,9 @@ def decode(dataIn):
 # ----------------------------------------------- #
 
 host = '129.127.10.18'
-port = 8222
+port = 8220
+if len(sys.argv) == 2:
+    port = int(sys.argv[1])
 address = (host, port)
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -30,10 +30,10 @@ function showPop(pop, row, col)
                 imshow(pop{count})
                 %title([temp1(count) simAVec(count) simBVec(count)])
                 title([fitnessVec(count) temp1(count) simAVec(count) simBVec(count)])
-                drawnow 
             end
             count=count+1;
         end
+        drawnow 
     end
 end
 

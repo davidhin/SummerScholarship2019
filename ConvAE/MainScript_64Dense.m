@@ -17,7 +17,7 @@ fitnessFunction = @fit_minDistImg; % Fitness function to be used
 global mu;
 global samples;
 global current_images;
-mu = 4;
+mu = 5;
 samples = 64;
 sigma = 0.5; % Setting a smaller sigma is better
 rng(4, 'twister');

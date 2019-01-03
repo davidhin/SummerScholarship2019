@@ -18,6 +18,8 @@ function showPop(pop, row, col)
         simAVec = [simAVec, imDistanceR(A, current_images{indx}, 2)];
         simBVec = [simBVec, imDistanceR(B, current_images{indx}, 2)];
     end
+    simAVec = simAVec(temp2);
+    simBVec = simBVec(temp2);
 
     count=1;
     for rows = 1:row

@@ -29,6 +29,7 @@ opts.PopSize = 10; % Set population to around 5/10
 opts.StopOnWarnings = 0;
 opts.StopOnStagnation = 0;
 opts.WarnOnEqualFunctionValues = 0;
+opts.TolFun = -inf;
 
 % Plot
 global distInterval;
@@ -85,8 +86,8 @@ final = x;
 global metricVec;
 global fitnessVec;
 [contributions, metricVec] = contribs(final, metric)
-figure
-scatter(metricVec, ones(mu,1))
+% figure
+% scatter(metricVec, ones(mu,1))
 
 fitnessVec = [];
 for indx=1:mu

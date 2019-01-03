@@ -7,6 +7,6 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(image)
     simA=imDistanceR(A,image,p);
     simB=imDistanceR(B,image,p);
     x = mean([simA, simB]);
-    fitness=2^((1.0-x-0.85)*70);
+    fitness=2^((1.0-x-0.85)*60);
     fitness=min(5, fitness);
 end

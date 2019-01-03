@@ -20,7 +20,7 @@ global current_images;
 global current_encoding;
 mu = 5;
 samples = 64;
-sigma = 3; % Setting a smaller sigma is better
+sigma = 0.5; % Setting a smaller sigma is better
 rng(3, 'twister');
 
 % Setup - CMAES
@@ -65,6 +65,7 @@ stdev = [];
 for i = 1:mu
     %pop = [pop,normrnd(0,2,[samples,1])];
     pop = [pop,start];
+    %pop = [pop,zeros(samples,1)];
     stdev = [stdev,ones(samples,1)*sigma];
 end
 

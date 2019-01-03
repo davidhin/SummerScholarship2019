@@ -17,7 +17,7 @@ fitnessFunction = @fit_minDistImg; % Fitness function to be used
 global mu;
 global samples;
 global current_images;
-mu = 4;
+mu = 6;
 samples = 64;
 sigma = 0.5; % Setting a smaller sigma is better
 rng(4, 'twister');
@@ -61,8 +61,8 @@ intervalCounter = 0;
 pop = [];
 stdev = [];
 for i = 1:mu
-    pop = [pop,normrnd(0,2,[samples,1])];
-    %pop = [pop,zeros(samples,1)];
+    %pop = [pop,normrnd(0,2,[samples,1])];
+    pop = [pop,zeros(samples,1)];
     stdev = [stdev,ones(samples,1)*sigma];
 end
 

@@ -27,7 +27,7 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     [contributions, metricVec] = contribs(images_cell_decoded,metric);
     sorted_contribs = sort(contributions);
     norm_contribs = norm(contributions, 0.2);
-    norm_fitness = prod(fitnessVec)^(1/3);
+    norm_fitness = prod(fitnessVec);
 
     % Plotting
     global distInterval;
@@ -51,3 +51,16 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     fitness = 1.0 - norm_contribs*norm_fitness; %  High similarity low diversity
     return; 
 end
+
+%% Find Initial Vecotr
+%     simAVec = []; 
+%     simBVec = [];
+%     global A;
+%     global B; 
+%     for indx=1:mu
+%     simAVec = [simAVec, imDistanceR(A, current_images{indx}, 2)];
+%     simBVec = [simBVec, imDistanceR(B, current_images{indx}, 2)];
+%     end
+%     fitness = 1.0 - (abs(0.5 - metricVec) + abs(simAVec - simBVec));
+
+

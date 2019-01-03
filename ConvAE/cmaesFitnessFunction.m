@@ -43,8 +43,11 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
         norm_fitness
         metric_plot = [metric_plot; metricVec];               
         %contrib_plot = [contrib_plot; contributions]; 
-        fitness_plot = [fitness_plot; fitnessVec];    
+        fitness_plot = [fitness_plot; fitnessVec];  
         showPop(current_images, 1, mu)
+        figure(2);
+        plot(metric_plot);
+        drawnow
     end
     intervalCounter = intervalCounter + 1;
 

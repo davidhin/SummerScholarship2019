@@ -5,7 +5,7 @@ fwrite(t, data);
 
 %% Read from buffer
 result_img = fread(t);
-load('../Autoencoder/result.mat','result_img');
+load(char(strcat('../Autoencoder/result_',string(t.RemotePort),'.mat')),'result_img');
 ret = result_img;
 % received_data2_char = char(received_data2);
 % result = str2num(received_data2_char');

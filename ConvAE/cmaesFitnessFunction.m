@@ -9,6 +9,8 @@ function [ fitness ] = fitPlusSimABtimesMeanHue(images)
     global fitnessFunction;
     global fitnessVec;
     global metricVec;
+    global current_encodings;
+    current_encodings = images;
     images = reshape(images, [samples,mu]);
     
     % Variables

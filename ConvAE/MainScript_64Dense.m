@@ -19,12 +19,14 @@ global mu;
 global samples;
 global current_images;
 global current_encoding;
+global current_encodings;
 mu = 8;
 samples = 64;
-sigma = 0.7; % Setting a smaller sigma is better
+sigma = 0.5; % Setting a smaller sigma is better
 rng(3, 'twister');
 load('starting_vector.mat', 'current_encoding');
-start = current_encoding;
+%start = current_encoding;
+% start = start_new;
 
 % Setup - CMAES
 opts = cmaes;
@@ -35,9 +37,11 @@ opts.StopOnStagnation = 0;
 opts.WarnOnEqualFunctionValues = 0;
 opts.TolFun = -inf;
 
+%% TODO Create a vector called "start_new" which is a random sample from an initial population of cmaes with sigma 10
+
 % Plot
 global distInterval;
-distInterval = 100;
+distInterval = 500;
 
 %% ------------------------------------------- %%
 %%                     CMAES                   %%
@@ -66,8 +70,8 @@ intervalCounter = 0;
 pop = [];
 stdev = [];
 for i = 1:mu
-    %pop = [pop,normrnd(0,2,[samples,1])];
-    pop = [pop,start];
+    pop = [pop,normrnd(0,8,[samples,1])];
+    %pop = [pop,start];
     %pop = [pop,zeros(samples,1)];
     stdev = [stdev,ones(samples,1)*sigma];
 end

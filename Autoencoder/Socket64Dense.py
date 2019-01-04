@@ -25,9 +25,14 @@ import socket
 import sys
 
 import tensorflow as tf
-gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.25)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 PATH = os.path.dirname(os.path.realpath(__file__))
+
+host = '129.127.10.18'
+port = 8220
+if len(sys.argv) == 2:
+    port = int(sys.argv[1])
 
 # ----------------------------------------------- #
 #                    Load Model                   #
@@ -104,17 +109,13 @@ def decode(dataIn):
    # print(result[:40])
    # print("Complete. Sending result to Matlab.")
    # pickle.dump( result, open( "result.p", "wb" ))
-   scipy.io.savemat('./result.mat', mdict={'result_img': result})
+   scipy.io.savemat(PATH+'/result_'+str(port)+'.mat', mdict={'result_img': result})
    return "1"
 
 # ----------------------------------------------- #
 #                    Socket                       #
 # ----------------------------------------------- #
 
-host = '129.127.10.18'
-port = 8220
-if len(sys.argv) == 2:
-    port = int(sys.argv[1])
 address = (host, port)
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -10,7 +10,7 @@ global t;
 global metric;
 global contribs;
 global fitnessFunction;
-metric = @featureMeanHue; % Metric to be used
+metric = @featureMeanSaturation; % Metric to be used
 contribs = @contribution;
 fitnessFunction = @fit_minDistImg; % Fitness function to be used
 

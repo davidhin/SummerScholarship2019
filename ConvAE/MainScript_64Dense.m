@@ -37,7 +37,7 @@ opts.TolFun = -inf;
 
 % Plot
 global distInterval;
-distInterval = 500;
+distInterval = 100;
 
 %% ------------------------------------------- %%
 %%                     CMAES                   %%

@@ -46,7 +46,6 @@ distInterval = 100;
 % Import the images 
 global A
 global B
-load('../Autoencoder/encodedImages.mat');
 A=imread('Kand5f.jpg');
 A=imresize(A,[128,128]);
 B=imread('yellowkk.jpg');

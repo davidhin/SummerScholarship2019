@@ -77,7 +77,7 @@ decoder = Model(encoded_input, deco)
 decoder.summary()
 
 # Load pretrained weights
-model.load_weights("64CoreDense.hdf5")
+model.load_weights(PATH + "/64CoreDense.hdf5")
 
 print("Loaded autoencoder and pretrained weights")
 
